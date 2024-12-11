@@ -2,7 +2,7 @@
 set FILENAME=%1
 
 :: Compile the source file
-clang++ -Wall -std=c++17 %FILENAME%.cpp -o %FILENAME%.exe
+clang++ -Wall -std=c++20 %FILENAME%.cpp General.cpp -o %FILENAME%.exe
 
 :: Check if compilation was successful
 if %ERRORLEVEL% NEQ 0 (
