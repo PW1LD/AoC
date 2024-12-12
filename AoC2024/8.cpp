@@ -1,9 +1,10 @@
 #include "General.h"
+#include "Debug.h"
 #include <format>
 
 using namespace std;
 
-bool debugOn = true;
+bool debugGlobal = false;
 
 bool placeAntiNode(int x, int y, vector<vector<int>>& antiNodes)
 {
@@ -79,6 +80,8 @@ vector<vector<int>> antiNodeMatrix(vector<vector<char>> antennas)
 
 vector<vector<int>> checkNodes(vector<vector<char>> antennas, bool star1 = true)
 {
+	bool debug = debugGlobal || false;
+
 	vector<vector<int>> antiNodes;
 
 	antiNodes = antiNodeMatrix(antennas);
@@ -87,6 +90,7 @@ vector<vector<int>> checkNodes(vector<vector<char>> antennas, bool star1 = true)
 	{
 		for (int j = 0; j < antennas[i].size(); ++j)
 		{
+			DebugStream(debug) << "Checking element at (" << i << "," << j << ")" << endl;
 			checkNode(i, j, antennas, antiNodes, star1);
 		}
 	}
@@ -96,15 +100,19 @@ vector<vector<int>> checkNodes(vector<vector<char>> antennas, bool star1 = true)
 
 int countAntiNodes(vector<vector<int>> antiNodes)
 {
+	bool debugLocal = false;
+
 	int sum;
 
 	sum = 0;
+
+	printMatrix(antiNodes, "", debugLocal, debugGlobal);
 
 	for (auto itRow = antiNodes.begin(); itRow != antiNodes.end(); ++itRow)
 	{
 		for (auto itCol = (*itRow).begin(); itCol != (*itRow).end(); ++itCol)
 		{
-			sum+= *itCol;
+			sum += *itCol;
 		}
 	}
 
@@ -113,16 +121,19 @@ int countAntiNodes(vector<vector<int>> antiNodes)
 
 int main()
 {
+	bool debugLocal = false;
+
 	vector<vector<char>> antennas;
 	vector<vector<int>> antiNodes;
 
 	antennas = readCharMatrix();
+	printMatrix(antennas, "", debugLocal, debugLocal);
 
 	antiNodes = checkNodes(antennas);
-	cout << countAntiNodes(antiNodes) << endl;
+	cout << "star1: " << countAntiNodes(antiNodes) << endl << endl;
 
 	antiNodes = checkNodes(antennas, false);
-	cout << countAntiNodes(antiNodes) << endl;
+	cout << "star2: " << countAntiNodes(antiNodes) << endl;
 	cout << endl;
 
 	return 0;

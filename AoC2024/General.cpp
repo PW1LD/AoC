@@ -1,14 +1,5 @@
 #include "General.h"
 
-void debug(string debugInfo, bool debugOn)
-{
-	if (debugOn)
-	{
-		cout << debugInfo << endl;
-	}
-
-}
-
 vector<vector<char>> readCharMatrix()
 {
 	string line;
@@ -24,29 +15,5 @@ vector<vector<char>> readCharMatrix()
 	}
 
 	return matrix;
-}
-
-void printMatrix(vector<vector<char>> matrix)
-{
-	for (auto itRow = matrix.begin(); itRow != matrix.end(); ++itRow)
-	{
-		for (auto itCol = (*itRow).begin(); itCol != (*itRow).end(); ++itCol)
-		{
-			cout << *itCol;
-		}
-		cout << endl;
-	}
-}
-
-void printMatrix(vector<vector<int>> matrix)
-{
-	for (auto itRow = matrix.begin(); itRow != matrix.end(); ++itRow)
-	{
-		for (auto itCol = (*itRow).begin(); itCol != (*itRow).end(); ++itCol)
-		{
-			cout << *itCol;
-		}
-		cout << endl;
-	}
 }
 
