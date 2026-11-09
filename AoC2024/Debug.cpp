@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void printMatrix(vector<vector<char>> matrix, string delimeter, bool debugLocal, bool debugGlobal)
+void printMatrix(vector<vector<char>> matrix, bool debug, string delimeter)
 {
-	if (debugLocal || debugGlobal)
+	if (debug)
 	{
 		for (auto itRow = matrix.begin(); itRow != matrix.end(); ++itRow)
 		{
@@ -12,21 +12,9 @@ void printMatrix(vector<vector<char>> matrix, string delimeter, bool debugLocal,
 			{
 				cout << *itCol << delimeter;
 			}
-			cout << endl;
-		}
-		cout << endl;
-	}
-}
-
-void printMatrix(vector<vector<int>> matrix, string delimeter, bool debugLocal, bool debugGlobal)
-{
-	if (debugLocal || debugGlobal)
-	{
-		for (auto itRow = matrix.begin(); itRow != matrix.end(); ++itRow)
-		{
-			for (auto itCol = (*itRow).begin(); itCol != (*itRow).end(); ++itCol)
+			if (delimeter.size())
 			{
-				cout << *itCol << delimeter;
+				cout << "\b \b";
 			}
 			cout << endl;
 		}
@@ -34,25 +22,53 @@ void printMatrix(vector<vector<int>> matrix, string delimeter, bool debugLocal, 
 	}
 }
 
-void printVector(vector<char> vec, string delimeter, bool debugLocal, bool debugGlobal)
+void printMatrix(vector<vector<int>> matrix, bool debug, string delimeter)
 {
-	if (debugLocal || debugGlobal)
+	if (debug)
+	{
+		for (auto itRow = matrix.begin(); itRow != matrix.end(); ++itRow)
+		{
+			for (auto itCol = (*itRow).begin(); itCol != (*itRow).end(); ++itCol)
+			{
+				cout << *itCol << delimeter;
+			}
+			if (delimeter.size())
+			{
+				cout << "\b \b";
+			}
+			cout << endl;
+		}
+		cout << endl;
+	}
+}
+
+void printVector(vector<char> vec, bool debug, string delimeter)
+{
+	if (debug)
 	{
 		for (auto it = vec.begin(); it != vec.end(); ++it)
 		{
 			cout << *it << delimeter;
+		}
+		if (delimeter.size())
+		{
+			cout << "\b \b";
 		}
 		cout << endl << endl;
 	}
 }
 
-void printVector(vector<int> vec, string delimeter, bool debugLocal, bool debugGlobal)
+void printVector(vector<int> vec, bool debug, string delimeter)
 {
-	if (debugLocal || debugGlobal)
+	if (debug)
 	{
 		for (auto it = vec.begin(); it != vec.end(); ++it)
 		{
 			cout << *it << delimeter;
+		}
+		if (delimeter.size())
+		{
+			cout << "\b \b";
 		}
 		cout << endl << endl;
 	}

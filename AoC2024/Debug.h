@@ -39,7 +39,7 @@ public:
     }
 };
 
-void printMatrix(vector<vector<char>> matrix, string delimeter = "", bool debugLocal = true, bool debugGlobal = false);
-void printMatrix(vector<vector<int>> matrix, string delimeter = "", bool debugLocal = true, bool debugGlobal = false);
-void printVector(vector<char> vec, string delimeter = "", bool debugLocal = true, bool debugGlobal = false);
-void printVector(vector<int> vec, string delimeter = "", bool debugLocal = true, bool debugGlobal = false);
+void printMatrix(vector<vector<char>> matrix, bool debug = true, string delimeter = "");
+void printMatrix(vector<vector<int>> matrix, bool debug = true, string delimeter = ",");
+void printVector(vector<char> vec, bool debug = true, string delimeter = "");
+void printVector(vector<int> vec, bool debug = true, string delimeter = ",");

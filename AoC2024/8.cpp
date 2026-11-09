@@ -1,6 +1,5 @@
 #include "General.h"
 #include "Debug.h"
-#include <format>
 
 using namespace std;
 
@@ -100,13 +99,13 @@ vector<vector<int>> checkNodes(vector<vector<char>> antennas, bool star1 = true)
 
 int countAntiNodes(vector<vector<int>> antiNodes)
 {
-	bool debugLocal = false;
+	bool debug = debugGlobal || false;
 
 	int sum;
 
 	sum = 0;
 
-	printMatrix(antiNodes, "", debugLocal, debugGlobal);
+	printMatrix(antiNodes, debug);
 
 	for (auto itRow = antiNodes.begin(); itRow != antiNodes.end(); ++itRow)
 	{
@@ -121,13 +120,13 @@ int countAntiNodes(vector<vector<int>> antiNodes)
 
 int main()
 {
-	bool debugLocal = false;
+	bool debug = debugGlobal || true;
 
 	vector<vector<char>> antennas;
 	vector<vector<int>> antiNodes;
 
 	antennas = readCharMatrix();
-	printMatrix(antennas, "", debugLocal, debugLocal);
+	printMatrix(antennas, debug);
 
 	antiNodes = checkNodes(antennas);
 	cout << "star1: " << countAntiNodes(antiNodes) << endl << endl;

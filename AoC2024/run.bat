@@ -13,8 +13,10 @@ if %ERRORLEVEL% NEQ 0 (
 
 if "%REALDATA%" NEQ "test" (
 	:: Run the program with the input
+	echo Real
 	%FILENAME%.exe < %FILENAME%.txt
 )
 
 :: Run the program with the test_input
+echo Test
 %FILENAME%.exe < %FILENAME%_test.txt
